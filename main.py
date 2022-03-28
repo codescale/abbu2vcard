@@ -17,6 +17,7 @@ if not os.path.exists(exportFolder):
 for contact in contacts:
     filename = contact.company if contact.is_company else "{} {}".format(
         contact.forename, contact.surename)
+    filename = filename.replace("/","_")
     f = open("{}/{}.vcf".format(exportFolder, filename), "w")
     f.write(vcard.create(contact))
     f.close()
